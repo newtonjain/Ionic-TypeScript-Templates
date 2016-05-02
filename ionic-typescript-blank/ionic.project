@@ -1,5 +1,5 @@
 {
-  "name": "ionic-typescript",
+  "name": "$projectname$",
   "app_id": "",
   "gulpStartupTasks": [
     "sass",

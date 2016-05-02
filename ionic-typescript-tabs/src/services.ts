@@ -59,6 +59,7 @@ module Services {
     }
   }
 }
+
 angular.module('starter.services', [])
 
   .service('Chats', Services.Chats);

@@ -51,35 +51,33 @@ class AppCtrl {
 
 class PlaylistCtrl {
 
-    public playlistId: number;
+  public playlistId: number;
 
-    constructor(private $stateParams: ng.ui.IStateParamsService){
-      this.playlistId = $stateParams["playlistId"];
-    }
+  constructor(private $stateParams: ng.ui.IStateParamsService) {
+    this.playlistId = $stateParams["playlistId"];
   }
+}
 
 
 class PlaylistsCtrl {
 
-    public playlists:[{
-    id: number;
-    title: string;
-    songs?: string[];
-    }];
+  public playlists:[{
+  id: number;
+  title: string;
+  songs?: string[];
+  }];
 
-    constructor() {
-      this.playlists = [
-        { title: "Reggae", id: 1 },
-        { title: "Chill", id: 2 },
-        { title: "Dubstep", id: 3 },
-        { title: "Indie", id: 4 },
-        { title: "Rap", id: 5 },
-        { title: "Cowbell", id: 6 }
-      ];
-    }
+  constructor() {
+    this.playlists = [
+      { title: "Reggae", id: 1 },
+      { title: "Chill", id: 2 },
+      { title: "Dubstep", id: 3 },
+      { title: "Indie", id: 4 },
+      { title: "Rap", id: 5 },
+      { title: "Cowbell", id: 6 }
+    ];
   }
-
-
+}
 
 angular.module('starter.controllers', [])
 
