@@ -4,11 +4,7 @@
     "allowNonTsExtensions": true,
     "module": "commonjs",
     "sourceMap": true,
-    "isolatedModules": true,
-    "noEmitOnError": false,
-    "rootDir": ".",
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true
+    "noEmitOnError": true,
   },
   "compileOnSave": false
 }

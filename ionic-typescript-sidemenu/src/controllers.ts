@@ -61,11 +61,7 @@ class PlaylistCtrl {
 
 class PlaylistsCtrl {
 
-  public playlists:[{
-  id: number;
-  title: string;
-  songs?: string[];
-  }];
+  public playlists: IPlaylist[];
 
   constructor() {
     this.playlists = [
@@ -78,6 +74,12 @@ class PlaylistsCtrl {
     ];
   }
 }
+
+export interface IPlaylist {
+    id: number;
+    title: string;
+  }
+
 
 angular.module('starter.controllers', [])
 

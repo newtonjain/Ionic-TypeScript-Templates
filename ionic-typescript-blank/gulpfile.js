@@ -13,13 +13,11 @@ var paths = {
   src: ['./src/*.ts']
 };
 
-gulp.task('default', ['sass']);
+gulp.task('default', ['sass', 'compile']);
 
 gulp.task('compile', function() {
   gulp.src(paths.src)
-    .pipe(typescript({
-      emitError: false
-    }))
+    .pipe(typescript())
     .pipe(gulp.dest('www/js/'))
 })
 

@@ -1,9 +1,10 @@
+/// <reference path="../typings/tsd.d.ts" />
 angular.module('starter', ['ionic', 'starter.controllers'])
-.run(function ($ionicPlatform) {
+    .run(function ($ionicPlatform) {
     $ionicPlatform.ready(function () {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
         // for form inputs)
-        if (window.cordova && window.cordova.plugins.Keyboard) {
+        if (cordova.platformId === 'ios' && window.cordova && window.cordova.plugins.Keyboard) {
             cordova.plugins.Keyboard.hideKeyboardAccessoryBar(false);
             cordova.plugins.Keyboard.disableScroll(true);
         }
@@ -12,8 +13,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
         }
     });
 })
-
-.config(function ($stateProvider, $urlRouterProvider) {
+    .config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
         .state("app", {
         url: "/app",
