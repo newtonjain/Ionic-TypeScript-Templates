@@ -1,13 +1,8 @@
 {
-  "name": "$projectname$",
+  "name": "ionic-ts-blank",
   "app_id": "",
-  "gulpStartupTasks": [
+   "gulpStartupTasks": [
     "sass",
-    "compile",
     "watch"
-  ],
-  "watchPatterns": [
-    "www/**/*",
-    "!www/lib/**/*"
   ]
 }

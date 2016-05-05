@@ -1,4 +1,3 @@
-/// <binding BeforeBuild='default' />
 var gulp = require('gulp');
 var gutil = require('gulp-util');
 var bower = require('bower');
@@ -7,39 +6,43 @@ var sass = require('gulp-sass');
 var minifyCss = require('gulp-minify-css');
 var rename = require('gulp-rename');
 var sh = require('shelljs');
-var typescript = require('gulp-tsc');
+
 var paths = {
-  sass: ['./scss/**/*.scss'],
-  src: ['./src/*.ts']
+    sass: ['./scss/**/*.scss'],
+    tsc: ['./app/**/*.ts']
 };
 
-gulp.task('default', ['sass', 'compile']);
-
-gulp.task('compile', function() {
-  gulp.src(paths.src)
-    .pipe(typescript())
-    .pipe(gulp.dest('www/js/'))
-})
+gulp.task('default', ['sass','tsc']);
 
 gulp.task('sass', function(done) {
   gulp.src('./scss/ionic.app.scss')
-    .pipe(sass({
-      errLogToConsole: true
-    }))
+    .pipe(sass())
+    .on('error', sass.logError)
     .pipe(gulp.dest('./www/css/'))
     .pipe(minifyCss({
       keepSpecialComments: 0
     }))
-    .pipe(rename({
-      extname: '.min.css'
-    }))
+    .pipe(rename({ extname: '.min.css' }))
     .pipe(gulp.dest('./www/css/'))
     .on('end', done);
 });
 
+// Run gulp watch in conjunction with Ionic serve to 
+// reflect live changes to TypeScript files in app directory
 gulp.task('watch', function() {
-  gulp.watch(paths.sass, ['sass']);
-  gulp.watch(paths.src, ['compile']);
+    gulp.watch(paths.sass, ['sass']);
+    gulp.watch(paths.tsc, ['tsc']);
+});
+
+// Run gulp tsc to transpile your TypeScript files from
+// app directory to www/js directory
+gulp.task('tsc', function() {
+  var ts = require('gulp-typescript');
+  var tsProject = ts.createProject('tsconfig.json');
+	var tsResult = tsProject.src('app')  
+		.pipe(ts(tsProject));
+	
+	return tsResult.js.pipe(gulp.dest('www/js/'));
 });
 
 gulp.task('install', ['git-check'], function() {
@@ -47,17 +50,4 @@ gulp.task('install', ['git-check'], function() {
     .on('log', function(data) {
       gutil.log('bower', gutil.colors.cyan(data.id), data.message);
     });
-});
-
-gulp.task('git-check', function(done) {
-  if (!sh.which('git')) {
-    console.log(
-      '  ' + gutil.colors.red('Git is not installed.'),
-      '\n  Git, the version control system, is required to download Ionic.',
-      '\n  Download git here:', gutil.colors.cyan('http://git-scm.com/downloads') + '.',
-      '\n  Once git is installed, run \'' + gutil.colors.cyan('gulp install') + '\' again.'
-    );
-    process.exit(1);
-  }
-  done();
 });
