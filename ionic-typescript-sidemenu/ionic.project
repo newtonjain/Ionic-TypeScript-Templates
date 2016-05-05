@@ -1,13 +1,4 @@
 {
-  "name": "$projectname$",
-  "app_id": "",
-  "gulpStartupTasks": [
-    "sass",
-    "compile",
-    "watch"
-  ],
-  "watchPatterns": [
-    "www/**/*",
-    "!www/lib/**/*"
-  ]
+  "name": "ionic-ts-sidemenu",
+  "app_id": ""
 }
