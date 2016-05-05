@@ -1,5 +1,6 @@
-/// <reference path="../typings/tsd.d.ts" />
+/// <reference path="../typings/browser.d.ts" />
 /// <reference path="./services.ts" />
+
 class DashCtrl {
   constructor() { }
 }
@@ -30,7 +31,6 @@ class ChatDetailCtrl {
     ) {
     this.chat = Chats.get($stateParams.chatId);
   }
-
 }
 
 class AccountCtrl {
@@ -43,11 +43,7 @@ class AccountCtrl {
 }
 
 angular.module('starter.controllers', [])
-
   .controller('DashCtrl', DashCtrl)
-
   .controller('ChatsCtrl', ChatsCtrl)
-
   .controller('ChatDetailCtrl', ChatDetailCtrl)
-
   .controller('AccountCtrl', AccountCtrl);

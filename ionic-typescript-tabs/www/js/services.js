@@ -1,4 +1,4 @@
-/// <reference path="../typings/tsd.d.ts" />
+/// <reference path="../typings/browser.d.ts" />
 var Services;
 (function (Services) {
     var Chats = (function () {
@@ -47,7 +47,7 @@ var Services;
             return null;
         };
         return Chats;
-    })();
+    }());
     Services.Chats = Chats;
 })(Services || (Services = {}));
 angular.module('starter.services', [])

@@ -1,10 +1,10 @@
-/// <reference path="../typings/tsd.d.ts" />
+/// <reference path="../typings/browser.d.ts" />
 /// <reference path="./services.ts" />
 var DashCtrl = (function () {
     function DashCtrl() {
     }
     return DashCtrl;
-})();
+}());
 var ChatsCtrl = (function () {
     function ChatsCtrl(Chats) {
         this.Chats = Chats;
@@ -16,7 +16,7 @@ var ChatsCtrl = (function () {
     };
     ;
     return ChatsCtrl;
-})();
+}());
 var ChatDetailCtrl = (function () {
     function ChatDetailCtrl(Chats, $stateParams) {
         this.Chats = Chats;
@@ -25,7 +25,7 @@ var ChatDetailCtrl = (function () {
         this.chat = Chats.get($stateParams.chatId);
     }
     return ChatDetailCtrl;
-})();
+}());
 var AccountCtrl = (function () {
     function AccountCtrl() {
         this.settings = {
@@ -33,7 +33,7 @@ var AccountCtrl = (function () {
         };
     }
     return AccountCtrl;
-})();
+}());
 angular.module('starter.controllers', [])
     .controller('DashCtrl', DashCtrl)
     .controller('ChatsCtrl', ChatsCtrl)
